@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     toggleAddEvent() {
-      this.showAddEvent = !this.showAddEvent
+      this.showAddEvent = true
     },
   },
 }

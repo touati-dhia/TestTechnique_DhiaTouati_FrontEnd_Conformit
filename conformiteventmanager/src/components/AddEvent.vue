@@ -4,21 +4,51 @@
       <label>Titre</label>
       <input type="text" v-model="title" name="text" placeholder="titre" />
     </div>
-        <div class="form-control">
+      <div class="form-control">
       <label>Description</label>
       <textarea v-model="description" name="desc">
          Description
       </textarea>
-    </div>
-    <div class="form-control">
-      <label>Day & Time</label>
+      </div>
+
+      <div class="form-control">
+      <label>Date</label>
       <input
-        type="text"
+        type="date"
         v-model="creationDate"
         name="day"
-        placeholder="Add Day & Time"
+        placeholder="date"
       />
-    </div>
+      </div>
+      <div class="form-control">
+      <label>Heure</label>
+      <input
+        type="time"
+        v-model="creationHour"
+        name="time"
+        placeholder="heure"
+      />
+      </div>
+      <div class="form-control">
+      <label>Nom du status</label>
+      <select id="status" name="status" v-model="statusName">
+        <option value="Open">ouvert</option>
+        <option value="InProgress">En cours</option>
+        <option value="Closed">Terminé</option>
+      </select> 
+      </div>
+      <div class="form-control">
+      <label>Employé Impliqué</label>
+      <select id="emp" name="emp" v-model="involvedEmployeeId">
+        <option value="" disabled selected hidden>Employé</option>
+      </select> 
+      </div>
+      <div class="form-control">
+      <label>Témoins</label>
+      <textarea v-model="Temoins" name="temoins">
+         Témoins
+      </textarea>
+      </div>
 
     <input type="submit" value="Save Event" class="btn btn-block" />
   </form>
@@ -31,13 +61,19 @@ export default {
     return {
       title: '',
       creationDate: '',
-      solved: false,
+      createdBy: '',
+      involvedEmployeeId: '',
+      description: '',
+      statusName: '',
+      Temoins: '',
     }
+  },
+  props:{
+    event: Object
   },
   methods: {
     onSubmit(e) {
       e.preventDefault()
-
       if (!this.title) {
         alert('Veuillez Ajouter un evennement')
         return
@@ -46,14 +82,26 @@ export default {
       const newEvent = {
         title: this.title,
         creationDate: this.creationDate,
-        solved: this.solved,
+        createdBy: 'dhia touati',
+        involvedEmployeeId: this.involvedEmployeeId,
+        description: this.description,
+        statusName: this.statusName,
+        Temoins: this.Temoins,
       }
-
+    if (!this.event)
+    {
       this.$emit('add-event', newEvent)
-
+    }
+    else{
+      this.$emit('edit-event', newEvent)
+    }
+      
       this.title = ''
       this.creationDate = ''
-      this.solved = false
+      this.involvedEmployeeId  = '' 
+      this.description = ''
+      this.statusName = ''
+      this.Temoins = ''
     },
   },
 }

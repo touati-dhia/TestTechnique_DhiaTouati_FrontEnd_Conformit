@@ -1,6 +1,6 @@
 <template>
   <div
-    @dblclick="$emit('toggle-solved', event.id)"
+    @click="$emit('toggle-add-event')"
     :class="[event.solved ? 'solved' : '', 'event']"
   >
     <h4>

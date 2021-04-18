@@ -1,9 +1,10 @@
 <template>
-  <AddEvent v-show="showAddEvent" @add-event="addEvent" />
+  <AddEvent v-show="showAddEvent" @add-event="addEvent" @edit-event= "editEvent" />
   <Events
     @toggle-solved="toggleReminder"
     @delete-event="deleteEvent"
     :events="events"
+    @event-clicked="clickedEvent"
   />
 </template>
 
@@ -25,9 +26,25 @@ export default {
     }
   },
   methods: {
+    clickedEvent(event){
+      AddEvent.event = event
+    },
     async addEvent(event) {
       const res = await fetch('api/events', {
         method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      })
+
+      const data = await res.json()
+
+      this.events = [...this.events, data]
+    },
+     async editEvent(event) {
+      const res = await fetch(`api/events/${event.id}`, {
+        method: 'PUT',
         headers: {
           'Content-type': 'application/json',
         },
@@ -76,6 +93,13 @@ export default {
     },
     async fetchEvent(id) {
       const res = await fetch(`api/events/${id}`)
+
+      const data = await res.json()
+
+      return data
+    },
+    async fetchEmployees(){
+      const res = await fetch('api/employees')
 
       const data = await res.json()
 

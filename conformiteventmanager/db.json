@@ -60,11 +60,11 @@
       "title": "Accident avec Adelle",
       "description": "",
       "statusName": "Open",
-      "Témoins": [
+      "Temoins": [
         "Mureil",
         "Melina"
       ],
-      "solved": true
+      "solved": false
     },
     {
       "id": 81,
@@ -74,7 +74,7 @@
       "title": "Accident avec Amara",
       "description": "",
       "statusName": "Closed",
-      "Témoins": [
+      "Temoins": [
         "Tina",
         "Luci"
       ],
@@ -88,7 +88,7 @@
       "title": "Accident avec Helena",
       "description": "",
       "statusName": "InProgress",
-      "Témoins": [
+      "Temoins": [
         "Jeanna",
         "Jerry"
       ],
@@ -102,30 +102,12 @@
       "title": "Accident avec Harry",
       "description": "Je me suis cassé le bras",
       "statusName": "InProgress",
-      "Témoins": [
+      "Temoins": [
         "Jeanna",
         "Jerry",
         "Robert"
       ],
       "solved": true
-    },
-    {
-      "title": "dhia test",
-      "creationDate": "15/12/2021",
-      "solved": false,
-      "id": 385
-    },
-    {
-      "title": "aaaaaa",
-      "creationDate": "15/12/2021",
-      "solved": false,
-      "id": 386
-    },
-    {
-      "title": "aaqqqqqqqq",
-      "creationDate": "16/12/2021",
-      "solved": false,
-      "id": 387
     }
   ],
   "employees": [
