@@ -1,16 +1,35 @@
 <template>
-<div class ="container">
-  <Header title="Mes Evennements"/>
-</div>
+  <div class="container">
+    <Header
+      @toggle-add-Event="toggleAddEvent"
+      title="Event Tracker"
+      :showAddEvent="showAddEvent"
+    />
+    <router-view :showAddEvent="showAddEvent"></router-view>
+    <Footer />
+  </div>
 </template>
 
 <script>
 import Header from './components/Header'
+import Footer from './components/Footer'
+
 export default {
   name: 'App',
   components: {
     Header,
-  }
+    Footer,
+  },
+  data() {
+    return {
+      showAddEvent: false,
+    }
+  },
+  methods: {
+    toggleAddEvent() {
+      this.showAddEvent = !this.showAddEvent
+    },
+  },
 }
 </script>
 

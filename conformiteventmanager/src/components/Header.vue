@@ -1,7 +1,12 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button text = "Add Event" color = "green"/>
+    <Button
+      v-show="homePage"
+      @btn-click="$emit('toggle-add-event')"
+      :text="showAddEvent ? 'Close' : 'Add Event'"
+      :color="showAddEvent ? 'red' : 'green'"
+    />
   </header>
 </template>
 
@@ -16,6 +21,15 @@ export default {
   },
   components: {
     Button,
+  },
+  computed: {
+    homePage() {
+      if (this.$route.path === '/') {
+        return true
+      } else {
+        return false
+      }
+    },
   },
 }
 </script>
